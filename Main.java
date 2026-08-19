@@ -12,7 +12,7 @@ public class Main {
         System.out.print("Enter User ID: ");
         int userId = sc.nextInt();
 
-        sc.nextLine(); 
+        sc.nextLine();
 
         System.out.print("Enter User Name: ");
         String userName = sc.nextLine();
@@ -20,7 +20,7 @@ public class Main {
         System.out.print("Enter Account Number: ");
         long accountNumber = sc.nextLong();
 
-        sc.nextLine(); 
+        sc.nextLine();
 
         System.out.print("Enter Account Type: ");
         String accountType = sc.nextLine();
@@ -37,16 +37,16 @@ public class Main {
             balance
         );
 
-        System.out.println("\n----- Bank Details -----");
+        System.out.println("\nBank Details-------->");
         b.displayBankDetails();
 
-        System.out.println("\n----- User Details -----");
+        System.out.println("\nUser Details-------->");
         b.displayUserDetails();
 
-        System.out.println("\n----- Account Details -----");
+        System.out.println("\nAccount Details-------->");
         b.displayAccountDetails();
 
-        System.out.println("\n----- Account Summary -----");
+        System.out.println("\nAccount Summary-------->");
         String summary = b.createAccountSummary();
         System.out.println(summary);
 
@@ -61,6 +61,25 @@ public class Main {
             System.out.println("Minimum balance is not maintained.");
         }
 
-        sc.close();
+        System.out.print("\nEnter Deposit Amount: ");
+        double depositAmount = sc.nextDouble();
+        boolean depositSuccess = b.deposit(depositAmount);
+        if (depositSuccess) {
+            System.out.println("Deposit successful. New Balance: " + b.checkBalance());
+        } else {
+            System.out.println("Deposit failed. Amount must be greater than zero.");
+        }
+
+        System.out.print("\nEnter Withdrawal Amount: ");
+        double withdrawAmount = sc.nextDouble();
+        boolean withdrawSuccess = b.withdraw(withdrawAmount);
+        if (withdrawSuccess) {
+            System.out.println("Withdrawal successful. New Balance: " + b.checkBalance());
+        } else {
+            System.out.println("Withdrawal failed. Invalid amount or insufficient balance.");
+        }
+
+        System.out.println("\nCurrent Balance: " + b.checkBalance());
+
     }
 }
