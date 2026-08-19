@@ -55,7 +55,7 @@ public class bank {
 
     boolean deposit(double amount) {
         if (amount > 0) {
-            balance = balance+ amount;
+            balance += amount;
             return true;
         }
         return false;
@@ -63,7 +63,7 @@ public class bank {
 
     boolean withdraw(double amount) {
         if (amount > 0 && amount <= balance) {
-            balance =balance - amount;
+            balance -= amount;
             return true;
         }
         return false;
